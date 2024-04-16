@@ -3,16 +3,8 @@
 import "../app/globals.css"
 import React from 'react';
 import GameGrid from '../components/GameGrid';
-import loadGames from '../pages/api/steam';
+import {loadGames, loadGameIds} from './api/steam';
 
-const Home = ({ initialGames }) => {
-  return (
-    <div className="container mx-auto px-4">
-      <h1 className="text-3xl font-bold my-8">Game Offers</h1>
-      <GameGrid initialGames={initialGames}/>
-    </div>
-  );
-};
 
 export async function getStaticProps() {
   // Simulate fetching games from an API
@@ -26,5 +18,14 @@ export async function getStaticProps() {
     },
   };
 }
+
+const Home = ({ initialGames }) => {
+  return (
+    <div className="container mx-auto px-4">
+      <h1 className="text-3xl font-bold my-8">Game Offers</h1>
+      <GameGrid initialGames={initialGames}/>
+    </div>
+  );
+};
 
 export default Home;

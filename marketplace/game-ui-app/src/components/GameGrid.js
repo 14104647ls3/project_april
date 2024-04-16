@@ -15,10 +15,12 @@ const GameGrid = ({initialGames}) => {
 
   if (typeof games !== "undefined") {
     return (
-      <div className="game-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div className="game-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
         {games.map(game => (
           <GameBox
             key={game.id}
+            id={game.id}
+            rank={game.rank}
             image={game.image}
             title={game.title}
             description={game.description}

@@ -13,17 +13,30 @@ async function fetchData(app_id) {
   }
 }
 
-export default async function loadGames() {
+export async function loadGames() {
   let rtnData = []
   for (let id in gameIdsData.game_ids) {
     const data = await parseData(gameIdsData.game_ids[id])
-    // console.log(data)
     rtnData.push(data)
   }
   return rtnData
 }
 
-export async function parseData(app_id) {
+export async function loadGameIds(ids) {
+  let rtnData = []
+  for (let id in ids) {
+    console.log(ids[id])
+    let data = await parseData(ids[id])
+    if (id < 3 & id >= 0) {
+      let rank = +id + +1
+      data.rank = "Top " + rank
+    }
+    rtnData.push(data)
+  }
+  return rtnData
+}
+
+async function parseData(app_id) {
   // Parse image, title and desc by id
   // Output format in { id , image , title , description}
   try {
@@ -45,5 +58,6 @@ export async function parseData(app_id) {
     return { id: app_id, image: headerImage, title: name, description: detailedDescription, price: priceOverview, offer: offerPrice }
   } catch (error) {
     console.error('Error processing data:', error)
+    return { id: '-1' }
   }
 }
