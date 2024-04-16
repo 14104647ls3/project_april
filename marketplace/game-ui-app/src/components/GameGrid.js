@@ -1,17 +1,17 @@
 // components/GameGrid.js
 
 import React, { useState } from 'react';
-import GameBox from './GameBox';
+// import GameBox from './GameBox';
+import dynamic from 'next/dynamic'
 
+const GameBox = dynamic(() => import('./GameBox'))
 const GameGrid = ({initialGames}) => {
   const [games, setGames] = useState(initialGames);
 
-  const loadMoreGames = (newGames) => {
+  const loadMoreGames = () => {
     // Simulating loading more games from an API
     setGames(prevGames => [...prevGames, ...newGames]);
   };
-
-  // console.log(loadGames())
 
   if (typeof games !== "undefined") {
     return (
@@ -29,6 +29,7 @@ const GameGrid = ({initialGames}) => {
             onClick={() => window.open(`${"https://store.steampowered.com/app/" + game.id}`)}
           />
         ))}
+        <button onClick={() => loadMoreGames()}>Load More</button>
       </div>
     )
   }
