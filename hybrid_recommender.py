@@ -7,10 +7,13 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import TruncatedSVD
+import sys
 
+import warnings
+warnings.filterwarnings("ignore", message="invalid value encountered in divide")
 ##init
-games = pd.read_csv('1000_games_from_steam_2022_to_2014.csv')
-games_data = pd.read_csv('games_data.csv')
+games = pd.read_csv('../1000_games_from_steam_2022_to_2014.csv')
+games_data = pd.read_csv('../games_data.csv')
 
 def recommend_similar_games(prompt):
 
@@ -84,11 +87,37 @@ def recommend_similar_games(prompt):
     similar = pd.DataFrame(dictDf, index = latent_matrix_2_df.index)
     similar.sort_values('hybrid', ascending=False, inplace=True)
 
-    print(similar[1:].head(11))
+    gameNameList = list(similar[1:].head(11).index)
+    appIdList = []
+    
+    for i in gameNameList:
+        appid = getAppIDByName(i)
+        appIdList.append(appid)
+    print(appIdList[0:9])
+    return appIdList[0:9]
+
+def getAppIDByName(gameName):
+    # Read the CSV file into a pandas DataFrame
+    #df = pd.read_csv('./1000_games_from_steam_2022_to_2014.csv')
+
+    # Filter the DataFrame to get the row with the specified App ID
+    game_row = games[games['Name'] == gameName]
+
+    # If a matching row is found, return the game name, otherwise return None
+    if not game_row.empty:
+        return game_row.iloc[0]['AppID']
+    else:
+        return None
 
 def main(prompt):
     recommend_similar_games(prompt)
 
 if __name__ == "__main__":
-    user_prompt = input("Please enter your prompt:")
+    # Check if there's exactly one command-line argument (excluding the script name itself)
+    if len(sys.argv) != 2:
+        print("Usage: python script_name.py <prompt>")
+        sys.exit(1)
+        
+    # Get the prompt from the command-line argument
+    user_prompt = sys.argv[1]
     main(user_prompt)
