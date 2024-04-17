@@ -6,7 +6,7 @@ import { Session } from '@/lib/types'
 import { getMissingKeys } from '../actions'
 
 export const metadata = {
-  title: 'Game Recommender Chatbot'
+  title: 'WhatToPlay'
 }
 
 export default async function IndexPage() {

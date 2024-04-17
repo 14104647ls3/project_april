@@ -36,9 +36,9 @@ export function ChatPanel({
 
   const exampleMessages = [
     {
-      heading: 'What are your favour game?',
-      subheading: ``,
-      message: `What are your favour game?`
+      heading: 'What game characteristics are you finding? ',
+      subheading: `Click for Example`,
+      message: `Indie Action Pixel Graphics 2D Retro Arcade Score Attack Minimalist Comedy Singleplayer Fast-Paced`
     }
   ]
 

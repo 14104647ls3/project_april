@@ -75,5 +75,5 @@
   "packageManager": "pnpm@8.6.3",
   "browser":{
     "child_process": false
-    }  
+  }  
 }
