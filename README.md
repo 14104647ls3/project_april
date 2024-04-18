@@ -29,3 +29,7 @@ To access the chat-ui, go to `https://<url>:3001`
 
 To access the store, go to `https://<url>:3002`
 
+# GET/POST from chat to recommend API
+`http://<url>:<port>/recommend?id1=<appid>&id2=<appid> .... &id9=<appid>`
+The port is 3002 by defualt, defined in dockerfile
+`id1` should be the selected game, and it should be rendered as a larger image
