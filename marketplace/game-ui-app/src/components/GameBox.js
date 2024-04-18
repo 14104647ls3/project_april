@@ -5,7 +5,7 @@ import "../app/globals.css"
 
 const GameBox = ({ id, image, title, description, price, onClick, offer, rank = "" }) => {
   if (id == '-1') {
-    console.log("Key -1 detected")
+    // console.log("Key -1 detected")
     return
   }
   if (price == "Free") {

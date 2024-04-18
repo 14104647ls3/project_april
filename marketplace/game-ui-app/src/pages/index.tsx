@@ -11,7 +11,7 @@ export async function getStaticProps() {
   // API for all app name and ids: https://api.steampowered.com/ISteamApps/GetAppList/v0002/
 
   let initialGames = await loadGames();
-  console.log(initialGames)
+  // console.log(initialGames)
   return {
     props: {
       initialGames,

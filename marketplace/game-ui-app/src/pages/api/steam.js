@@ -25,7 +25,7 @@ export async function loadGames() {
 export async function loadGameIds(ids) {
   let rtnData = []
   for (let id in ids) {
-    console.log(ids[id])
+    // console.log(ids[id])
     let data = await parseData(ids[id])
     if (id < 3 & id >= 0) {
       let rank = +id + +1
