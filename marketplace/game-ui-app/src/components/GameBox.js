@@ -24,7 +24,6 @@ const GameBox = ({ id, image, title, description, price, onClick, offer, rank = 
     return (
       <div className="game-box bg-black rounded-lg overflow-hidden border border-gray-300 p-4 m-4 cursor-pointer shadow-lg transition-transform transform hover:scale-105 top_prediction"
         onClick={onClick}>
-        {/* <h1 className="text-lg text-center font-semibold mt-2 text-white">{rank}</h1> */}
         <h1 className="text-lg text-center font-semibold mt-2 text-white">You Picked</h1>
         <img src={image} alt={title} className="max-w-full h-auto mx-auto" />
         <h2 className="text-lg text-center font-semibold mt-2 text-white">{title}</h2>
