@@ -153,6 +153,18 @@ async function executePythonScript(args: string[]): Promise<string[]> {
   });
 }
 
+async function generateParams(list: string[]) {
+  const output = [];
+  output.push(list.map((value, index) => `id${index + 1}=${value}`).join('&'));
+  for (let i = 0; i < 8; i++) {
+    const removedElement = list.shift();
+    if (typeof removedElement === 'string') {
+      list.push(removedElement);
+    }
+    output.push(list.map((value, index) => `id${index + 1}=${value}`).join('&'));
+  }
+  return output;
+}
 
 async function submitUserMessage(content: string) {
   'use server'
@@ -207,8 +219,10 @@ try {
   const fetchedData = await fetchDataForAppIds(appIds);
   //console.log(fetchedData)
 
+  const urlParams = await generateParams(appIds)
   // Construct URLs using the app IDs
-  const urls = appIds.map((appId, index) => `https://store.steampowered.com/app/${appId}`);
+  const urls = urlParams.map((appId, index) => `http://localhost:3002/recommand?${appId}`);
+  console.log(urls)
 
   
   // Construct buttons using the URLs and fetched data
