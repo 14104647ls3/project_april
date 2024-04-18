@@ -3,6 +3,7 @@ Repo for april project
 
 # Setup the Chat & Prediction Image
 Make sure docker in installed in your instance
+You can use either `Docker Compose` or `Docker` method
 
 # Docker Compose Method
 ## Build and Run all instance at once
