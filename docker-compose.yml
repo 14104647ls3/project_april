@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  chat:
+    build:
+      context: .
+      dockerfile: dockerfile-chat
+    ports:
+      - "3001:3000"
+
+  store:
+    build:
+      context: .
+      dockerfile: dockerfile-store
+    ports:
+      - "3002:3000"
