@@ -12,8 +12,8 @@ import sys
 import warnings
 warnings.filterwarnings("ignore", message="invalid value encountered in divide")
 ##init
-games = pd.read_csv('./python/1000_games_from_steam_2022_to_2014.csv')
-games_data = pd.read_csv('./python/games_data.csv')
+games = pd.read_csv('../python/1000_games_from_steam_2022_to_2014.csv')
+games_data = pd.read_csv('../python/games_data.csv')
 
 def recommend_similar_games(prompt):
 

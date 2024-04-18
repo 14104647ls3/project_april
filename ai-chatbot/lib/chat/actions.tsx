@@ -171,7 +171,7 @@ async function submitUserMessage(content: string) {
   })
   const appIds: string[] = [];
   try {
-    const rawOutput = await executePythonScript(['./python/hybrid_recommender.py', content]);
+    const rawOutput = await executePythonScript(['../python/hybrid_recommender.py', content]);
     // Clean up the string and parse it as JSON
     const cleanedOutput = rawOutput[0].replace(/\n/g, ''); // Remove newline characters
     const appIdsAsInt = JSON.parse(cleanedOutput); // Parse JSON string to array
