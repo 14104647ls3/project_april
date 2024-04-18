@@ -1,27 +1,14 @@
 # Stage 1: Build Node.js application
 FROM node:20.12.2 AS nodejs-build
 RUN apt-get update -y
-RUN apt-get install python3-pip -y
 
 # Copy the rest of the application code to the working directory
-COPY ./ai-chatbot/ ./ai-chatbot/
-
-# Copy Python dependencies
-COPY ./python/ ./python/
-
-# Install dependencies
-WORKDIR /ai-chatbot
-RUN npm install -g pnpm@8.6.3
-RUN pnpm --version
-RUN pnpm install
-
-# Install Python dependencies
-WORKDIR /python
-RUN pip install -r requirements.txt --break-system-packages
+COPY ./marketplace/game-ui-app/ ./market/
 
 # Expose any ports the app needs
 EXPOSE 3000
 
 # Command to run the application
-WORKDIR /ai-chatbot
-CMD ["pnpm", "dev"]
+
+WORKDIR /market
+CMD ["npm", "run", "dev"]
