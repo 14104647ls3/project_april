@@ -11,4 +11,5 @@ EXPOSE 3000
 # Command to run the application
 
 WORKDIR /market
+RUN npm i
 CMD ["npm", "run", "dev"]
