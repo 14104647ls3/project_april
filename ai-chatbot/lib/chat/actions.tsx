@@ -222,9 +222,7 @@ try {
   const urlParams = await generateParams(appIds)
   // Construct URLs using the app IDs
   const urls = urlParams.map((appId, index) => `http://localhost:3002/recommand?${appId}`);
-  console.log(urls)
-
-  
+    
   // Construct buttons using the URLs and fetched data
   const buttons = fetchedData.map((data, index) => ({
     id: nanoid(),
