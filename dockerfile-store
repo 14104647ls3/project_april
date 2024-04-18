@@ -1,0 +1,19 @@
+# Stage 1: Build Node.js application
+FROM node:20.12.2 AS nodejs-build
+RUN apt-get update -y
+
+# Copy the rest of the application code to the working directory
+COPY ./marketplace/game-ui-app/ ./market/
+
+# Install dependencies
+WORKDIR /market
+# RUN npm install -g pnpm@8.6.3
+# RUN pnpm --version
+# RUN pnpm install
+
+# Expose any ports the app needs
+EXPOSE 3000
+
+# Command to run the application
+WORKDIR /market
+CMD ["npm", "run", "dev"]
