@@ -27,7 +27,7 @@ export async function loadGameIds(ids) {
   for (let id in ids) {
     // console.log(ids[id])
     let data = await parseData(ids[id])
-    if (id < 3 & id >= 0) {
+    if (id < 4 & id >= 0) {
       let rank = +id + +1
       data.rank = "Top " + rank
     }
