@@ -6,7 +6,8 @@ import {loadGames, loadGameIds} from './api/steam';
 
 export async function getServerSideProps(context) {
   const { id1, id2, id3, id4, id5, id6, id7, id8, id9 } = context.query;
-  const games = await loadGameIds([id1, id2, id3, id4, id5, id6, id7, id8, id9])
+  // const games = await loadGameIds([id1, id2, id3, id4, id5, id6, id7, id8, id9])
+  const games = await loadGameIds([id1, id2, id3, id4, 1771180, 2025780, 1156380, 2127230, 1141580, 1337970])
   return {
     props: {
       games: games
