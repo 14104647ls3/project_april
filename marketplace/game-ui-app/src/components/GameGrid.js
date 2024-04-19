@@ -29,7 +29,6 @@ const GameGrid = ({initialGames}) => {
             onClick={() => window.open(`${"https://store.steampowered.com/app/" + game.id}`)}
           />
         ))}
-        <button onClick={() => loadMoreGames()}>Load More</button>
       </div>
     )
   }
